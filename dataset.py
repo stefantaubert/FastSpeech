@@ -13,12 +13,13 @@ from utils import process_text, pad_1D, pad_2D
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+LJSPEECH_PATH = '/datasets/LJSpeech-1.1-lite'
 
 class FastSpeechDataset(Dataset):
     """ LJSpeech """
 
     def __init__(self):
-        self.text = process_text(os.path.join("data", "train.txt"))
+        self.text = process_text(os.path.join(LJSPEECH_PATH, "train.txt"))
 
     def __len__(self):
         return len(self.text)

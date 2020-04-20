@@ -34,12 +34,12 @@ dropout = 0.1
 
 # Train
 alignment_path = "./alignments"
-checkpoint_path = "./model_new"
+checkpoint_path = "/datasets/models/fastspeech"
 logger_path = "./logger"
 mel_ground_truth = "./mels"
 
-batch_size = 64
-epochs = 1000
+batch_size = 128 #64
+epochs = 200 #1000
 n_warm_up_step = 4000
 
 learning_rate = 1e-3

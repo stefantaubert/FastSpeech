@@ -10,6 +10,7 @@ import hparams as hp
 import waveglow
 import audio as Audio
 
+from dataset import LJSPEECH_PATH
 
 def preprocess_ljspeech(filename):
     in_dir = filename
@@ -20,7 +21,7 @@ def preprocess_ljspeech(filename):
     write_metadata(metadata, out_dir)
 
     shutil.move(os.path.join(hp.mel_ground_truth, "train.txt"),
-                os.path.join("data", "train.txt"))
+                os.path.join(LJSPEECH_PATH, "train.txt"))
 
 
 def write_metadata(metadata, out_dir):
@@ -30,16 +31,17 @@ def write_metadata(metadata, out_dir):
 
 
 def main():
-    path = os.path.join("data", "LJSpeech-1.1")
+    #path = os.path.join(LJSPEECH_PATH, "LJSpeech-1.1")
+    path = os.path.join(LJSPEECH_PATH)
     preprocess_ljspeech(path)
 
-    text_path = os.path.join("data", "train.txt")
+    text_path = os.path.join(LJSPEECH_PATH, "train.txt")
     texts = process_text(text_path)
 
     if not os.path.exists(hp.alignment_path):
         os.mkdir(hp.alignment_path)
-    else:
-        return
+    #else:
+    #    return
 
     tacotron2 = get_Tacotron2()
 

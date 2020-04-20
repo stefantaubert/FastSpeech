@@ -65,7 +65,8 @@ def main(args):
     for epoch in range(hp.epochs):
         # Get Training Loader
         training_loader = DataLoader(dataset,
-                                     batch_size=hp.batch_size**2,
+                                     #batch_size=hp.batch_size*,
+                                     batch_size=420,
                                      shuffle=True,
                                      collate_fn=collate_fn,
                                      drop_last=True,
@@ -182,6 +183,9 @@ def main(args):
                         Time, [i for i in range(len(Time))], axis=None)
                     Time = np.append(Time, temp_value)
 
+        torch.save({'model': model.state_dict(), 'optimizer': optimizer.state_dict(
+        )}, os.path.join(hp.checkpoint_path, 'checkpoint_final.pth.tar'))
+        print("save final model")
 
 if __name__ == "__main__":
 

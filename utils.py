@@ -33,7 +33,7 @@ def plot_data(data, figsize=(12, 4)):
 
     if not os.path.exists("img"):
         os.mkdir("img")
-    plt.savefig(os.path.join("img", "model_test.jpg"))
+    plt.savefig(os.path.join("img", "model_test.png"))
 
 
 def get_mask_from_lengths(lengths, max_len=None):
